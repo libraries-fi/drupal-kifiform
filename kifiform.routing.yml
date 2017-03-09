@@ -1,4 +1,4 @@
-kifiform.view:
+kifiform.view_counter:
   path: '/kifiform/view_counter/{entity_type}/{entity_id}/{field}'
   defaults:
     _controller: 'Drupal\kifiform\Controller\ViewCounterController::view'
