@@ -18,4 +18,4 @@ Captcha is a simple user verification tool. It presents a textual question an ex
 ### View counter
 Counts displays of given entity. Counter is implemented as an AJAX call so it works even when pages
 are being served from cache. It is implemented as a form field so it is also possible to use multiple
-counter per entity for different purposes.
+counters per entity for different purposes.
