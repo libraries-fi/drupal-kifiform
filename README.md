@@ -13,7 +13,7 @@ P.S. Please do not put any ad hoc hacks here.
 | View counter | kifiform_view_counter
 
 ### Captcha
-Captcha is a simple user verification tool. It presents a textual question an expects a valid answer.
+Captcha is a simple user verification tool. It presents a textual question and expects a valid answer.
 
 ### View counter
 Counts displays of given entity. Counter is implemented as an AJAX call so it works even when pages
