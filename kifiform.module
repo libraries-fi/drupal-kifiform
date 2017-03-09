@@ -1,0 +1,14 @@
+<?php
+
+function kifiform_theme() {
+  return [
+    'kifiform_captcha' => [
+      'render element' => 'element',
+    ]
+  ];
+}
+
+
+function kifiform_field_widget_info_alter(array &$info) {
+  $info['number']['field_types'][] = 'kifiform_view_counter';
+}

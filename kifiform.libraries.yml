@@ -1,0 +1,8 @@
+view-counter:
+  js:
+    public/js/view-counter.js: {}
+    
+captcha:
+  css:
+    component:
+      public/css/captcha.css: {}
