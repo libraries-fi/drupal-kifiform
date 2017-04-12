@@ -3,8 +3,20 @@
 function kifiform_theme() {
   return [
     'kifiform_captcha' => [
+      'template' => 'captcha',
       'render element' => 'element',
-    ]
+    ],
+    'kifiform_rating_simple' => [
+      'template' => 'rating_simple',
+      'variables' => [
+        'rating' => 0,
+        'votes' => 0,
+        'allow_voting' => FALSE,
+        'display_votes' => FALSE,
+        'form_url' => '',
+        'id' => null,
+      ]
+    ],
   ];
 }
 

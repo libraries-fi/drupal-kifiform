@@ -47,10 +47,6 @@ class CaptchaItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
-    // $random = new Random();
-    // $values['alias'] = str_replace(' ', '-', strtolower($random->sentences(3)));
-    // return $values;
-
     return [
       'question' => 'Lorem ipsum?',
       'answers' => 'dolor|sit|amet'

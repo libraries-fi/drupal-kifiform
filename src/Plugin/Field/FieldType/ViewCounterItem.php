@@ -2,7 +2,6 @@
 
 namespace Drupal\kifiform\Plugin\Field\FieldType;
 
-use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
@@ -15,7 +14,6 @@ use Drupal\Core\Field\Plugin\Field\FieldType\IntegerItem;
  *   id = "kifiform_view_counter",
  *   label = @Translation("View counter"),
  *   description = @Translation("Provides JS-based view counter."),
- *   module = "ajax_views",
  *   default_formatter = "kifiform_view_counter",
  *   default_widget = "number"
  * )
@@ -38,6 +36,7 @@ class ViewCounterItem extends IntegerItem {
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     $schema = parent::schema($field_definition);
     $schema['columns']['value']['default'] = 0;
+    $schema['columns']['value']['null'] = FALSE;
     return $schema;
   }
 }

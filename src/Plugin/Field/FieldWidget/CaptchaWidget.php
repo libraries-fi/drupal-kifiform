@@ -66,8 +66,9 @@ class CaptchaWidget extends WidgetBase {
 
   public static function validateFormElement(array &$element, FormStateInterface $form_state) {
     if (!isset($element['#access']) || $element['#access']) {
-      $input = $element['input']['#value'];
+      $input = strtolower($element['input']['#value']);
       $answers = array_filter(explode('|', $element['answers']['#value']));
+      $answer = array_map('strtolower', $answers);
 
       if (in_array($input, $answers, TRUE)) {
         static::setCaptchaDisabledForSession();
