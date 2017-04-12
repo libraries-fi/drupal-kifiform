@@ -44,20 +44,18 @@ class CaptchaWidget extends WidgetBase {
 
     $element['question'] = [
       '#type' => 'container',
-      '#title' => $this->t('Captcha'),
-
       'value' => [
         '#type' => 'html_tag',
         '#tag' => 'p',
         '#value' => $captcha['question'],
       ],
+    ];
 
-      'input' => [
-        '#type' => 'textfield',
-        '#title' => $this->t('Your answer'),
-        '#description' => $captcha['description'],
-        '#required' => TRUE,
-      ]
+    $element['input'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Your answer'),
+      '#description' => $captcha['description'],
+      '#required' => TRUE,
     ];
 
     $element['answers'] = [
@@ -65,33 +63,23 @@ class CaptchaWidget extends WidgetBase {
       '#value' => $captcha['answers'],
     ];
 
-    // $element['input'] = [
-    //   '#type' => 'textfield',
-    //   '#title' => $this->t('Your answer'),
-    //   '#description' => $captcha['description'],
-    //   '#required' => TRUE,
-    // ];
-
     $element['#access'] = static::isCaptchaRequired();
     return $element;
   }
 
   public static function preprocessQuestionLabel(array $element) {
-
     $element['question']['input']['#attributes']['aria-labelledby'] = sprintf('%s-question', $element['#id']);
-
-    // exit('asdasddsa');
 
     return $element;
   }
 
   public static function validateFormElement(array &$element, FormStateInterface $form_state) {
     if (!isset($element['#access']) || $element['#access']) {
-      $input = strtolower($element['input']['#value']);
-      $answers = array_filter(explode('|', $element['answers']['#value']));
-      $answer = array_map('strtolower', $answers);
+      $input = mb_strtolower($element['input']['#value']);
+      $options = array_filter(explode('|', $element['answers']['#value']));
+      $options = array_map('mb_strtolower', $options);
 
-      if (in_array($input, $answers, TRUE)) {
+      if (in_array($input, $options, TRUE)) {
         static::setCaptchaDisabledForSession();
       } else {
         $form_state->setError($element, t('Invalid answer.'));
