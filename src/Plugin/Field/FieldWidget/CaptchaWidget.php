@@ -40,11 +40,24 @@ class CaptchaWidget extends WidgetBase {
     $element['#attached']['library'][] = 'kifiform_captcha/captcha';
     $element['#attributes']['class'][] = 'kifi-captcha';
     $element['#required'] = TRUE;
+    $element['#process'][] = [get_class($this), 'preprocessQuestionLabel'];
 
     $element['question'] = [
-      '#type' => 'item',
+      '#type' => 'container',
       '#title' => $this->t('Captcha'),
-      '#markup' => $captcha['question'],
+
+      'value' => [
+        '#type' => 'html_tag',
+        '#tag' => 'p',
+        '#value' => $captcha['question'],
+      ],
+
+      'input' => [
+        '#type' => 'textfield',
+        '#title' => $this->t('Your answer'),
+        '#description' => $captcha['description'],
+        '#required' => TRUE,
+      ]
     ];
 
     $element['answers'] = [
@@ -52,14 +65,22 @@ class CaptchaWidget extends WidgetBase {
       '#value' => $captcha['answers'],
     ];
 
-    $element['input'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Your answer'),
-      '#description' => $captcha['description'],
-      '#required' => TRUE,
-    ];
+    // $element['input'] = [
+    //   '#type' => 'textfield',
+    //   '#title' => $this->t('Your answer'),
+    //   '#description' => $captcha['description'],
+    //   '#required' => TRUE,
+    // ];
 
     $element['#access'] = static::isCaptchaRequired();
+    return $element;
+  }
+
+  public static function preprocessQuestionLabel(array $element) {
+
+    $element['question']['input']['#attributes']['aria-labelledby'] = sprintf('%s-question', $element['#id']);
+
+    // exit('asdasddsa');
 
     return $element;
   }
