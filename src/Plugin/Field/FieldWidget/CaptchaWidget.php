@@ -68,7 +68,7 @@ class CaptchaWidget extends WidgetBase {
   }
 
   public static function preprocessQuestionLabel(array $element) {
-    $element['question']['input']['#attributes']['aria-labelledby'] = sprintf('%s-question', $element['#id']);
+    $element['input']['#attributes']['aria-labelledby'] = sprintf('%s-question', $element['#id']);
 
     return $element;
   }
