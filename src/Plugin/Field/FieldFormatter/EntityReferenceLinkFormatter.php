@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @FieldFormatter(
  *   id = "kifiform_entity_reference_link",
- *   label = @Translation("Link to entity (2)"),
+ *   label = @Translation("Link to entity"),
  *   field_types = {
  *     "entity_reference",
  *   },
