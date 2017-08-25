@@ -6,3 +6,15 @@ kifiform.view_counter:
     _access: 'TRUE'
   options:
     no_cache: 'TRUE'
+
+kifiform.vote:
+  path: '/kifiform/rating/{entity_type}/{entity}/{field}'
+  defaults:
+    _controller: 'Drupal\kifiform\Controller\RatingController::vote'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      entity:
+        type: entity:{entity_type}

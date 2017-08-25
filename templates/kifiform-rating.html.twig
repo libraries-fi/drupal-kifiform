@@ -1,0 +1,14 @@
+<div class="rating-summary" property="schema:aggregateRating" typeof="schema:AggregateRating">
+  <div class="rating-box">
+    <meta property="schema:worstRating" content="0"/>
+    <meta property="schema:bestRating" content="100"/>
+    <meta property="schema:ratingValue" content="{{ rating }}"/>
+    <div class="rating-fill" style="width: {{ rating }}%" data-bind="rating"></div>
+  </div>
+
+  {% if display_votes %}
+    <meta property="schema:ratingCount" content="{{ votes }}">
+    <div class="rating-votes" data-bind="votes">{% trans %}{{ votes }} votes{% endtrans %}</div>
+  {% else %}
+  {% endif %}
+</div>

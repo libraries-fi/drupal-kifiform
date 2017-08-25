@@ -40,7 +40,7 @@ class CaptchaWidget extends WidgetBase {
     $element['#attached']['library'][] = 'kifiform_captcha/captcha';
     $element['#attributes']['class'][] = 'kifi-captcha';
     $element['#required'] = TRUE;
-    $element['#process'][] = [get_class($this), 'preprocessQuestionLabel'];
+    $element['#process'][] = [get_class($this), 'processQuestionLabel'];
 
     $element['question'] = [
       '#type' => 'container',
@@ -64,12 +64,12 @@ class CaptchaWidget extends WidgetBase {
     ];
 
     $element['#access'] = static::isCaptchaRequired();
+
     return $element;
   }
 
-  public static function preprocessQuestionLabel(array $element) {
+  public static function processQuestionLabel(array $element) {
     $element['input']['#attributes']['aria-labelledby'] = sprintf('%s-question', $element['#id']);
-
     return $element;
   }
 

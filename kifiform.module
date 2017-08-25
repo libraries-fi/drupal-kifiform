@@ -6,8 +6,7 @@ function kifiform_theme() {
       'template' => 'captcha',
       'render element' => 'element',
     ],
-    'kifiform_rating_simple' => [
-      'template' => 'rating_simple',
+    'kifiform_rating' => [
       'variables' => [
         'rating' => 0,
         'votes' => 0,
@@ -15,6 +14,11 @@ function kifiform_theme() {
         'display_votes' => FALSE,
         'form_url' => '',
         'id' => null,
+      ]
+    ],
+    'kifiform_rating_thumbs' => [
+      'variables' => [
+        'form_url' => null,
       ]
     ],
   ];

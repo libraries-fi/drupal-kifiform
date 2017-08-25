@@ -3,9 +3,7 @@
 
   Drupal.behaviors.kifiFormViewCounter = {
     attach: function(context, settings) {
-      var fields = $('.field--type-kifiform-view-counter', context);
-
-      fields.each(function(i, elem) {
+      $('.field--type-kifiform-view-counter', context).each(function(i, elem) {
         var url = elem.dataset.viewCounterPath;
         $.post(url).then(function(result) {
           if (result.status == "ok") {
