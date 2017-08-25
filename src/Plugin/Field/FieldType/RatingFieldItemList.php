@@ -9,7 +9,7 @@ use Drupal\Core\TypedData\TypedDataInterface;
 
 class RatingFieldItemList extends FieldItemList {
   public function isUserAllowedToVote() {
-    return $this->first()->isUserAllowedToVote();
+    return $this->first()->isUserAllowedToVote() && $this->access('view');
   }
 
   public function addVote($vote, $lock_session = FALSE) {
