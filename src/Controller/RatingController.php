@@ -21,7 +21,6 @@ class RatingController extends ControllerBase {
   }
 
   public function vote(Request $request, $entity, $field) {
-    $builder = \Drupal::service('form_builder');
     $field = $entity->get($field);
 
     if ($field->access('view') && $field->isUserAllowedToVote()) {
