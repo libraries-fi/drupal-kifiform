@@ -1,10 +1,10 @@
-/* line 2, ../scss/kifiform-rating.scss */
-.field--type-kifiform-rating .rating-box {
+/* line 3, ../scss/kifiform-rating.scss */
+.kifiform-rating-item .rating-bar {
   height: 1.3rem;
   border: 1px solid navy;
 }
-/* line 6, ../scss/kifiform-rating.scss */
-.field--type-kifiform-rating .rating-fill {
+/* line 7, ../scss/kifiform-rating.scss */
+.kifiform-rating-item .rating-fill {
   height: 100%;
   background-color: navy;
 }

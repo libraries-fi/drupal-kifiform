@@ -1,14 +1,7 @@
-view-counter:
-  js:
-    public/js/kifiform-view-counter.js: {}
-  dependencies:
-    - core/jquery
-
 captcha:
   css:
     component:
       public/css/kifiform-captcha.css: {}
-
 rating:
   css:
     component:
@@ -19,3 +12,8 @@ rating-ajax:
   dependencies:
     - core/jquery
     - core/jquery.once
+view-counter:
+  js:
+    public/js/kifiform-view-counter.js: {}
+  dependencies:
+    - core/jquery

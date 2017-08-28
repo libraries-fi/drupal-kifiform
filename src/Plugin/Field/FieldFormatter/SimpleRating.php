@@ -13,7 +13,8 @@ use Drupal\kifiform\Form\RatingForm;
 use Drupal\Core\Form\FormState;
 
 /**
- * Display files in the search results
+ * Display files in the search results.
+ * Aggregate rating is an integer value between 9-100.
  *
  * @FieldFormatter(
  *  id = "kifiform_rating_simple",
@@ -32,7 +33,6 @@ class SimpleRating extends FormatterBase {
     $elements = [];
     $current_page = \Drupal::requestStack()->getCurrentRequest()->getUri();
 
-
     foreach ($items as $delta => $item) {
       $entity = $item->getEntity();
       $field = $item->getFieldDefinition()->getName();
@@ -47,6 +47,7 @@ class SimpleRating extends FormatterBase {
           '#rating' => $item->value,
           '#up' => $item->up,
           '#down' => $item->down,
+          '#votes' => $item->votes,
           '#attached' => [
             'library' => ['kifiform/rating']
           ],

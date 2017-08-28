@@ -29,17 +29,20 @@ class RatingItem extends FieldItemBase {
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties = [];
     $properties['votes'] = DataDefinition::create('integer')
-      ->setLabel(t('Number of votes'))
+      ->setLabel(t('Total number of votes'))
       ->setComputed(TRUE)
       ->setClass(VoteCount::class);
     $properties['up'] = DataDefinition::create('integer')
       ->setLabel(t('Total likes'))
+      ->setDescription('Number of up votes.')
       ->setRequired(TRUE);
     $properties['down'] = DataDefinition::create('integer')
       ->setLabel(t('Total dislikes'))
+      ->setDescription('Number of down votes.')
       ->setRequired(TRUE);
     $properties['value'] = DataDefinition::create('integer')
       ->setLabel(t('Rating'))
+      ->setDescription('Aggregate rating.')
       ->setComputed(TRUE)
       ->setClass(RatingImplementationV1::class);
     return $properties;
@@ -48,6 +51,17 @@ class RatingItem extends FieldItemBase {
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     return [
       'columns' => [
+        'value' => [
+          'description' => 'Special rating calculated from cast votes.',
+          'type' => 'int',
+          'size' => 'tiny',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+
+          // Default value chosen based on how the current algorithm works. Also, considering
+          // a five-star rating system, it gives a fair default value of about three stars.
+          'default' => 60,
+        ],
         'up' => [
           'description' => 'Total amount of likes.',
           'type' => 'int',
@@ -59,14 +73,6 @@ class RatingItem extends FieldItemBase {
           'description' => 'Total amount of dislikes.',
           'type' => 'int',
           'default' => 0,
-          'unsigned' => TRUE,
-          'not null' => TRUE,
-        ],
-        'value' => [
-          'description' => 'Special rating calculated from cast votes.',
-          'type' => 'int',
-          'size' => 'tiny',
-          'default' => 50,
           'unsigned' => TRUE,
           'not null' => TRUE,
         ],
@@ -88,8 +94,7 @@ class RatingItem extends FieldItemBase {
 
   public function isUserAllowedToVote() {
     $store = \Drupal::service('user.private_tempstore')->get('kifiform');
-    $key = sprintf('%s.%s', $this->getEntity()->getEntityTypeId(), $this->getFieldDefinition()->getName());
-
+    $key = sprintf('%s.%s.%s', $this->getEntity()->getEntityTypeId(), $this->getFieldDefinition()->getName(), $this->getEntity()->id());
     return !$store->get($key);
   }
 

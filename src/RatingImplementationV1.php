@@ -12,7 +12,7 @@ class RatingImplementationV1 extends TypedData {
 
   public function getValue($langcode = NULL) {
     if ($this->rating === NULL && $this->parent->votes > 0) {
-      $this->rating = $this->computeRating($this->parent->up, $this->parent->down);
+      $this->rating = static::computeRating($this->parent->up, $this->parent->down);
     }
 
     return $this->rating;
@@ -30,7 +30,7 @@ class RatingImplementationV1 extends TypedData {
    * @param $votes Total number of votes cast.
    * @param $points Sum of points. (Each vote can be worth of many points, positive or negative.)
    */
-  protected function computeRating($likes, $dislikes) {
+  public static function computeRating($likes, $dislikes) {
     // $likes += 10;
     // $total = $likes + $dislikes;
     // $rating = (($likes + 1.9208) / $total - 1.96 * sqrt(($likes * $dislikes) / $total + 0.9604) / $total) / (1 + 3.8416 / $total) * 100;
