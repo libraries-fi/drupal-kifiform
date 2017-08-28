@@ -8,7 +8,6 @@
     {% if display_votes %}
     <meta property="schema:ratingCount" content="{{ votes }}">
     <div class="rating-votes" data-bind="votes">{% trans %}{{ votes }} votes{% endtrans %}</div>
-    {% else %}
+    {% endif %}
   </div>
-  {% endif %}
 </div>
