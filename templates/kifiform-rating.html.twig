@@ -6,8 +6,8 @@
   <div class="rating-bar" aria-label="{% trans %}{{ rating }} out of 100{% endtrans %}">
     <div class="rating-fill" style="width: {{ rating }}%" data-bind="rating"></div>
     {% if display_votes %}
-    <meta property="schema:ratingCount" content="{{ votes }}">
-    <div class="rating-votes" data-bind="votes">{% trans %}{{ votes }} votes{% endtrans %}</div>
+      <meta property="schema:ratingCount" content="{{ votes }}">
+      <div class="rating-votes" data-bind="votes">{% trans %}{{ votes }} votes{% endtrans %}</div>
     {% endif %}
   </div>
 </div>
