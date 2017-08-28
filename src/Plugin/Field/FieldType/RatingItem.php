@@ -29,9 +29,7 @@ class RatingItem extends FieldItemBase {
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties = [];
     $properties['votes'] = DataDefinition::create('integer')
-      ->setLabel(t('Total number of votes'))
-      ->setComputed(TRUE)
-      ->setClass(VoteCount::class);
+      ->setLabel(t('Total number of votes'));
     $properties['up'] = DataDefinition::create('integer')
       ->setLabel(t('Total likes'))
       ->setDescription('Number of up votes.')
@@ -52,25 +50,28 @@ class RatingItem extends FieldItemBase {
     return [
       'columns' => [
         'value' => [
-          'description' => 'Special rating calculated from cast votes.',
+          'description' => 'Computed content quality rating.',
           'type' => 'int',
           'size' => 'tiny',
           'unsigned' => TRUE,
+          'not null' => FALSE,
+        ],
+        'votes' => [
+          'description' => 'Total number of votes.',
+          'type' => 'int',
+          'default' => 0,
+          'unsigned' => TRUE,
           'not null' => TRUE,
-
-          // Default value chosen based on how the current algorithm works. Also, considering
-          // a five-star rating system, it gives a fair default value of about three stars.
-          'default' => 60,
         ],
         'up' => [
-          'description' => 'Total amount of likes.',
+          'description' => 'Amount of likes.',
           'type' => 'int',
           'default' => 0,
           'unsigned' => TRUE,
           'not null' => TRUE,
         ],
         'down' => [
-          'description' => 'Total amount of dislikes.',
+          'description' => 'Amount of dislikes.',
           'type' => 'int',
           'default' => 0,
           'unsigned' => TRUE,
