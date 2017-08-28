@@ -6,6 +6,10 @@ rating:
   css:
     component:
       public/css/kifiform-rating.css: {}
+rating--stars:
+  css:
+    component:
+      public/css/kifiform-rating--stars.css: {}
 rating-ajax:
   js:
     public/js/kifiform-rating.js: {}

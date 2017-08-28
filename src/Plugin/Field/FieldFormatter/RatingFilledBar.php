@@ -17,14 +17,14 @@ use Drupal\Core\Form\FormState;
  * Aggregate rating is an integer value between 9-100.
  *
  * @FieldFormatter(
- *  id = "kifiform_rating_simple",
- *  label = @Translation("Star rating with thumbs"),
+ *  id = "kifiform_rating_bar",
+ *  label = @Translation("Filled bar"),
  *  field_types = {
  *    "kifiform_rating"
  *  }
  * )
  */
-class SimpleRating extends FormatterBase {
+class RatingFilledBar extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     if (!count($items)) {
       $items->appendItem();

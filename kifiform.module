@@ -8,12 +8,21 @@ function kifiform_theme() {
     ],
     'kifiform_rating' => [
       'variables' => [
-        'rating' => 0,
+        'rating' => null,
         'votes' => 0,
-        'allow_voting' => FALSE,
         'display_votes' => FALSE,
+        'allow_voting' => FALSE,
         'form_url' => '',
-        'id' => null,
+      ]
+    ],
+    'kifiform_rating__stars' => [
+      'variables' => [
+        'votes' => 0,
+        'rating' => null,
+        'stars' => null,
+        'display_votes' => FALSE,
+        'allow_voting' => FALSE,
+        'form_url' => '',
       ]
     ],
     'kifiform_rating_thumbs' => [

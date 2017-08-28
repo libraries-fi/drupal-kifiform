@@ -22,7 +22,7 @@ use Drupal\Core\Field\Plugin\Field\FieldType\IntegerItem;
  *   module = "kifiform",
  *   list_class = "Drupal\kifiform\Plugin\Field\FieldType\RatingFieldItemList",
  *   default_widget = "number",
- *   default_formatter = "kifiform_rating_simple",
+ *   default_formatter = "kifiform_rating_bar",
  * )
  */
 class RatingItem extends FieldItemBase {
