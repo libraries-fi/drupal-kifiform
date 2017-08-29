@@ -14,8 +14,14 @@
 
             $.post(form[0].dataset.url, data, function(response) {
               var votes = response.up + response.down;
-              element.find('[data-bind=votes]').text(Drupal.t('@votes votes', {'@votes': votes}));
-              element.find('[data-bind=rating]').animate({width: response.rating + "%"});
+
+              element.find('[data-bind=votes]')
+                .text(Drupal.t('@votes votes', {'@votes': votes}));
+
+              element.find('[data-bind=rating]')
+                .animate({"width": response.value + "%"});
+
+              element.find('[data-bind=form]').fadeOut();
             });
           });
         });
