@@ -31,10 +31,15 @@ class RatingImplementationV1 extends TypedData {
    * @param $points Sum of points. (Each vote can be worth of many points, positive or negative.)
    */
   public static function computeRating($likes, $dislikes) {
-    $likes = $likes * 1.2 + 1;
-    $dislikes += 1;
-    $total = $likes + $dislikes;
-    $rating = 50 + ($likes - $dislikes) / $total * 50;
+    if ($likes + $dislikes > 0) {
+      var_dump("COMPUTE");
+      $likes = $likes * 1.2 + 1;
+      $dislikes += 1;
+      $total = $likes + $dislikes;
+      $rating = 50 + ($likes - $dislikes) / $total * 50;
+    } else {
+      $rating = 0;
+    }
 
     return $rating;
   }
