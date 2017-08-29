@@ -43,6 +43,9 @@ class RatingItem extends FieldItemBase {
       ->setDescription('Aggregate rating.')
       ->setComputed(TRUE)
       ->setClass(RatingImplementationV1::class);
+    $properties['last_vote'] = DataDefinition::create('timestamp')
+      ->setLabel('Last vote')
+      ->setDescription("Timestamp for latest vote");
     return $properties;
   }
 
@@ -77,6 +80,12 @@ class RatingItem extends FieldItemBase {
           'unsigned' => TRUE,
           'not null' => TRUE,
         ],
+        'last_vote' => [
+          'description' => 'Time of latest vote.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ]
       ],
       'indexes' => [
         'value' => ['value'],
@@ -113,18 +122,17 @@ class RatingItem extends FieldItemBase {
     }
   }
 
-  public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
-    exit('sample');
-  }
-
   public function isEmpty() {
     return FALSE;
   }
 
   public function onChange($property_name, $notify = TRUE) {
-    // Enforce re-calculation of aggregate rating.
     if ($property_name == 'up' || $property_name == 'down') {
+      // Enforce re-calculation of aggregate rating.
       $this->value = NULL;
+
+      $this->votes++;
+      $this->last_vote = date();
     }
     parent::onChange($property_name, $notify);
   }
