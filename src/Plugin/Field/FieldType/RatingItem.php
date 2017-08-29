@@ -117,7 +117,7 @@ class RatingItem extends FieldItemBase {
 
     if ($lock_session) {
       $store = \Drupal::service('user.private_tempstore')->get('kifiform');
-      $key = sprintf('%s.%s', $this->getEntity()->getEntityTypeId(), $this->getFieldDefinition()->getName());
+      $key = sprintf('%s.%s.%s', $this->getEntity()->getEntityTypeId(), $this->getFieldDefinition()->getName(), $this->getEntity()->id());
       $store->set($key, TRUE);
     }
   }
