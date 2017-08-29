@@ -37,11 +37,14 @@ class RatingFilledBar extends FormatterBase {
       $entity = $item->getEntity();
       $field = $item->getFieldDefinition()->getName();
 
+      $cache_tags = $entity->getCacheTags();
+
       $elements[$delta] = [
+        '#cache' => [
+          'keys' => [$entity->getEntityTypeId(), $entity->id(), $field, $item->last_vote],
+          'contexts' => ['languages', 'route.name'],
+        ],
         'rating' => [
-          '#cache' => [
-            'max-age' => 0
-          ],
           '#theme' => 'kifiform_rating',
           '#display_votes' => $this->getSetting('display_votes'),
           '#rating' => $item->value,
@@ -62,10 +65,15 @@ class RatingFilledBar extends FormatterBase {
         ]);
 
         $elements[$delta]['voting'] = [
+          '#cache' => [
+            'contexts' => ['session'],
+            'keys' => [$entity->getEntityTypeId(), $entity->id(), $field, $item->last_vote],
+          ],
           '#type' => 'container',
           '#attributes' => [
             'class' => ['rating-form'],
             'data-url' => $form_url->toString(),
+            'data-bind' => 'form',
           ],
           '#attached' => [
             'library' => ['kifiform/rating-ajax']
