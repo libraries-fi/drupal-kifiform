@@ -3,8 +3,9 @@
 function kifiform_theme() {
   return [
     'kifiform_captcha' => [
-      'template' => 'captcha',
-      'render element' => 'element',
+      'variables' => [
+        'foo' => ''
+      ]
     ],
     'kifiform_rating' => [
       'variables' => [
@@ -33,7 +34,7 @@ function kifiform_theme() {
   ];
 }
 
-
 function kifiform_field_widget_info_alter(array &$info) {
   $info['number']['field_types'][] = 'kifiform_view_counter';
+  $info['number']['field_types'][] = 'kifiform_rating';
 }

@@ -15,8 +15,7 @@ use Drupal\Core\TypedData\DataDefinition;
  *   id = "kifiform_captcha",
  *   label = @Translation("Captcha"),
  *   description = @Translation("An entity field that provides a captcha detection."),
- *   default_widget = "kifiform_captcha",
- *   default_formatter = "string",
+ *   default_widget = "kifiform_captcha"
  * )
  */
 class CaptchaItem extends FieldItemBase {

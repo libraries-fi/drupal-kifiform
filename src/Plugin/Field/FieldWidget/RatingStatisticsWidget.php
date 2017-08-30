@@ -37,7 +37,6 @@ class RatingStatisticsWidget extends WidgetBase {
       '#type' => 'item',
       '#title' => $this->t('Dislikes'),
       '#markup' => sprintf('%d', $items->down),
-
     ];
 
     $element['type'] = [

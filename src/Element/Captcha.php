@@ -2,8 +2,6 @@
 
 namespace Drupal\kifiform\Element;
 
-use Drupal\Component\Utility\Html;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\FormElement;
 
 /**
@@ -18,16 +16,9 @@ class Captcha extends FormElement {
       '#input' => TRUE,
       '#multiple' => FALSE,
       '#extended' => FALSE,
-      '#element_validate' => [
-        [get_class($this), 'validateCaptcha'],
-      ],
       '#attached' => [
         'library' => ['kifiform_captcha/captcha']
       ],
     ];
-  }
-
-  public static function validateCaptcha(&$element, FormStateInterface $form_state, &$form) {
-
   }
 }
