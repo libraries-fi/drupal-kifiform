@@ -21,9 +21,16 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
  * )
  */
 class CaptchaWidget extends WidgetBase {
-  public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+  public function form(FieldItemListInterface $items, array &$form, FormStateInterface $form_state, $get_delta = NULL) {
+    if (!static::isCaptchaRequired()) {
+      return [];
+    } else {
+      return parent::form($items, $form, $form_state, $get_delta);
+    }
+  }
 
-    // Load this from a storage.
+  public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    // FIXME: Load this from a storage.
     $captcha = [
       'question' => t('How much is <b>:a plus :b</b>?', [':a' => t('six'), ':b' => t('three') ] ),
       'answers' => implode('|', [t('nine'), t('nine', [], ['context' => 'captcha answer #2'])]),
@@ -62,8 +69,6 @@ class CaptchaWidget extends WidgetBase {
       '#type' => 'value',
       '#value' => $captcha['answers'],
     ];
-
-    $element['#access'] = static::isCaptchaRequired();
 
     return $element;
   }
