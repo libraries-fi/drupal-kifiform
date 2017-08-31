@@ -1,31 +1,31 @@
+.kifiform-tag {
+  line-height: 1.6em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  color: black;
+  padding: 0 .3rem;
+  margin-right: .3rem;
+  margin-bottom: .3rem;
+  white-space: nowrap;
+}
+
 .kifiform-autocomplete-tags {
   max-width: 100%;
   margin: .5rem 0;
 
-  .kifiform-tag {
-    line-height: 1.6em;
-    display: inline-block;
-    border: 1px solid #ccc;
-    background-color: #f7f7f7;
-    color: black;
-    padding: 0 0 0 .3em;
-    margin-right: .3em;
-    margin-bottom: .3em;
-    white-space: nowrap;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #fff;
-    }
-  }
-
   .kifiform-tag > button {
     width: 2em;
-    // padding: 0 .3em;
-    padding: 0;
-    margin: 0 0 0 .5em;
+    padding: 0 .3em;
+    margin: 0 -0.3rem 0 0.3rem;
     border-width: 0;
     font-size: .5em;
     vertical-align: top;
+    background-color: #ddd;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #bbb;
+    }
   }
 }
