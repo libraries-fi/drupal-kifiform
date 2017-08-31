@@ -21,3 +21,13 @@ view-counter:
     public/js/kifiform-view-counter.js: {}
   dependencies:
     - core/jquery
+
+autocomplete-tags:
+  css:
+    component:
+      public/css/kifiform-autocomplete-tags.css: {}
+  js:
+    public/js/kifiform-autocomplete-tags.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
