@@ -77,9 +77,11 @@
             .on("autocompleteselect", function(event, ui) {
               append_value(proxy, ui.item.value);
               append_tag(input, tags, ui.item)
-            })
-            .on("autocompleteclose", function(event) {
-              this.value = "";
+
+              // FIXME: Hack to clear the text input... Could not do it any other way.
+              setTimeout(function() {
+                input.val("");
+              });
             })
             .on("keypress", function(event) {
               if (event.keyCode == KEY_ENTER && this.value.length > 0) {
