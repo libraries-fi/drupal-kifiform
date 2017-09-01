@@ -16,19 +16,21 @@
       .attr("data-value", item.value)
       .text(item.label);
 
-    var close = $("<button>")
-      .attr("type", "button")
-      .attr("title", Drupal.t("Remove tag"))
-      .text("X")
-      .on("click", function(event) {
-        tag.remove();
-        container.trigger("kififormtagremove", {
-          autocomplete: root,
-          container: container[0],
-          tag: tag[0],
-          item: item
-        });
-      }).appendTo(tag);
+    if (!root.is(":disabled")) {
+      $("<button>")
+        .attr("type", "button")
+        .attr("title", Drupal.t("Remove tag"))
+        .text("X")
+        .on("click", function(event) {
+          tag.remove();
+          container.trigger("kififormtagremove", {
+            autocomplete: root,
+            container: container[0],
+            tag: tag[0],
+            item: item
+          });
+        }).appendTo(tag);
+    }
 
     container.append(tag);
     root.trigger("kififormtaginsert", {
