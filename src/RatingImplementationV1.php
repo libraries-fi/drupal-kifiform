@@ -32,7 +32,6 @@ class RatingImplementationV1 extends TypedData {
    */
   public static function computeRating($likes, $dislikes) {
     if ($likes + $dislikes > 0) {
-      var_dump("COMPUTE");
       $likes = $likes * 1.2 + 1;
       $dislikes += 1;
       $total = $likes + $dislikes;
