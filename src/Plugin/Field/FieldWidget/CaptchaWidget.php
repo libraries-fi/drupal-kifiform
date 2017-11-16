@@ -44,7 +44,7 @@ class CaptchaWidget extends WidgetBase {
     ];
 
     $element['#element_validate'][] = [get_class($this), 'validateFormElement'];
-    $element['#attached']['library'][] = 'kifiform_captcha/captcha';
+    $element['#attached']['library'][] = 'kifiform/captcha';
     $element['#attributes']['class'][] = 'kifi-captcha';
     $element['#required'] = TRUE;
     $element['#process'][] = [get_class($this), 'processQuestionLabel'];
