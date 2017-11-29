@@ -132,7 +132,7 @@ class RatingItem extends FieldItemBase {
       $this->value = NULL;
 
       $this->votes++;
-      $this->last_vote = date();
+      $this->last_vote = time();
     }
     parent::onChange($property_name, $notify);
   }
