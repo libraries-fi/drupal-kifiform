@@ -21,39 +21,37 @@ class RatingStatisticsWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     // NOTE: Using '#plain_text' won't work when value is '0'!
 
-    $element['votes'] = [
-      '#type' => 'item',
-      '#title' => $this->t('Votes'),
-      '#markup' => sprintf('%d', $items->votes),
+
+    $element['statistics'] = [
+      '#type' => 'table',
+      '#rows' => [
+        [
+          ['data' => [
+          '#type' => 'item',
+          '#title' => $this->t('Votes'),
+          '#markup' => sprintf('%d', $items->votes),
+          ]],
+          ['data' => [
+            '#type' => 'item',
+            '#title' => $this->t('Rating'),
+            '#markup' => str_repeat('*', ceil($items->value / 20)) ?: $this->t('No rating'),
+          ]]
+        ],
+        [
+          ['data' => [
+            '#type' => 'item',
+            '#title' => $this->t('Dislikes'),
+            '#markup' => sprintf('%d', $items->down),
+          ]],
+          ['data' => [
+            '#type' => 'item',
+            '#title' => $this->t('Likes'),
+            '#markup' => sprintf('%d', $items->up),
+          ]]
+        ]
+      ]
     ];
-
-    $element['up'] = [
-      '#type' => 'item',
-      '#title' => $this->t('Likes'),
-      '#markup' => sprintf('%d', $items->up),
-    ];
-
-    $element['down'] = [
-      '#type' => 'item',
-      '#title' => $this->t('Dislikes'),
-      '#markup' => sprintf('%d', $items->down),
-    ];
-
-    $element['type'] = [
-      '#type' => 'item',
-      '#title' => $this->t('Rating'),
-      '#markup' => str_repeat('*', ceil($items->value / 20)) ?: $this->t('No rating'),
-    ];
-
-    // $element['type'] = [
-    //   '#theme' => 'kifiform_rating__stars',
-    //   '#votes' => $items->votes,
-    //   '#stars' => ceil($items->value / 20),
-    //   '#attached' => [
-    //     'library' => ['kifiform/rating--stars']
-    //   ]
-    // ];
-
+    
     return $element;
   }
 }
