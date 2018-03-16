@@ -1,0 +1,6 @@
+{
+  "name": "libraries-fi/kifiform",
+  "description": "Small collection of general-purpose form components.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+"
+}
