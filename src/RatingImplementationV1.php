@@ -37,7 +37,7 @@ class RatingImplementationV1 extends TypedData {
       $total = $likes + $dislikes;
       $rating = 50 + ($likes - $dislikes) / $total * 50;
     } else {
-      $rating = 0;
+      $rating = 50;
     }
 
     return $rating;

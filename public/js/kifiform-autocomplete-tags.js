@@ -78,7 +78,7 @@
           input
             .on("autocompleteselect", function(event, ui) {
               ui.item.autocompleted = true;
-              
+
               append_value(proxy, ui.item.value);
               append_tag(input, tags, ui.item)
 
