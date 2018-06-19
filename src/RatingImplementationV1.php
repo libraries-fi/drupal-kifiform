@@ -11,7 +11,7 @@ class RatingImplementationV1 extends TypedData {
   protected $rating = NULL;
 
   public function getValue($langcode = NULL) {
-    if ($this->rating === NULL && $this->parent->votes > 0) {
+    if ($this->rating === NULL) {
       $this->rating = static::computeRating($this->parent->up, $this->parent->down);
     }
 
