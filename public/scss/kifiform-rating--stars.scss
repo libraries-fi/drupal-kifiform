@@ -29,18 +29,3 @@ $rating-fill-sm: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAMCAYAAAA+
     margin-left: 1rem;
   }
 }
-
-/**
- * Field is displayed as part of a View (listing).
- */
-.views-field > .kifiform-rating-item {
-  .rating-bar {
-    width: 60px;
-    background: url($rating-bg-sm) no-repeat left center;
-  }
-
-  .rating-fill {
-    height: 12px;
-    background: url($rating-fill-sm) no-repeat left center;
-  }
-}
