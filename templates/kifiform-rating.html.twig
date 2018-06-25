@@ -1,13 +1,13 @@
-<div class="kifiform-rating-item" property="schema:aggregateRating" typeof="schema:AggregateRating">
+<span class="kifiform-rating-item" property="schema:aggregateRating" typeof="schema:AggregateRating">
   <meta property="schema:worstRating" content="0"/>
   <meta property="schema:bestRating" content="100"/>
   <meta property="schema:ratingValue" content="{{ rating }}"/>
 
-  <div class="rating-bar" aria-label="{% trans %}{{ rating }} out of 100{% endtrans %}">
-    <div class="rating-fill" style="width: {{ rating }}%" data-bind="rating"></div>
+  <span class="rating-bar" aria-label="{% trans %}{{ rating }} out of 100{% endtrans %}">
+    <span class="rating-fill" style="width: {{ rating }}%" data-bind="rating"></span>
     {% if display_votes %}
       <meta property="schema:ratingCount" content="{{ votes }}">
-      <div class="rating-votes" data-bind="votes">{% trans %}{{ votes }} votes{% endtrans %}</div>
+      <span class="rating-votes" data-bind="votes">{% trans %}{{ votes }} votes{% endtrans %}</span>
     {% endif %}
-  </div>
-</div>
+  </span>
+</span>

@@ -45,15 +45,12 @@ class RatingFilledBar extends FormatterBase {
           'contexts' => ['languages', 'route.name'],
         ],
         'rating' => [
-          '#theme' => 'kifiform_rating',
+          '#type' => 'kifiform_rating',
           '#display_votes' => $this->getSetting('display_votes'),
           '#rating' => $item->value,
           '#up' => $item->up,
           '#down' => $item->down,
           '#votes' => $item->votes,
-          '#attached' => [
-            'library' => ['kifiform/rating']
-          ],
         ]
       ];
 

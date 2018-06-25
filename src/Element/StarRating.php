@@ -2,14 +2,12 @@
 
 namespace Drupal\kifiform\Element;
 
-use Drupal\Core\Render\Element\FormElement;
-
 /**
  * Interactive widget for content rating.
  *
- * @FormElement("kifiform_rating")
+ * @FormElement("kifiform_stars")
  */
-class Rating extends FormElement {
+class StarRating extends Rating {
   const VALUE_MAX = 100;
   const VALUE_MIN = 0;
   const STAR_COUNT = 5;
@@ -24,12 +22,14 @@ class Rating extends FormElement {
       '#pre_render' => [
         [$class, 'preRenderRating'],
       ],
-      '#theme' => 'kifiform_rating',
+      '#theme' => 'kifiform_rating__stars',
     ];
   }
 
   public static function preRenderRating($element) {
-    $element['#attached'] = ['library' => ['kifiform/rating']];
+    $stars = ceil(self::STAR_COUNT * ($element['#value'] - self::VALUE_MIN) / (self::VALUE_MAX - self::VALUE_MIN));
+    $element['#stars'] = $stars;
+    $element['#attached'] = ['library' => ['kifiform/rating--stars']];
     return $element;
   }
 }

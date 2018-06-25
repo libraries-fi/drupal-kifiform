@@ -1,10 +1,17 @@
-/* line 3, ../scss/kifiform-rating.scss */
 .kifiform-rating-item .rating-bar {
+  width: 120px;
+  display: inline-block;
   height: 1.3rem;
   border: 1px solid navy;
-}
-/* line 7, ../scss/kifiform-rating.scss */
+  position: relative; }
 .kifiform-rating-item .rating-fill {
+  display: inline-block;
   height: 100%;
-  background-color: navy;
-}
+  background-color: navy; }
+.kifiform-rating-item .rating-votes {
+  position: absolute;
+  left: 120px;
+  padding-left: 0.5rem;
+  white-space: nowrap; }
+
+/*# sourceMappingURL=kifiform-rating.css.map */

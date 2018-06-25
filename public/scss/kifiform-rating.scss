@@ -1,11 +1,22 @@
-// .field--type-kifiform-rating {
 .kifiform-rating-item {
   .rating-bar {
+    width: 120px;
+    display: inline-block;
     height: 1.3rem;
     border: 1px solid navy;
+    position: relative;
   }
+
   .rating-fill {
+    display: inline-block;
     height: 100%;
     background-color: navy;
+  }
+
+  .rating-votes {
+    position: absolute;
+    left: 120px;
+    padding-left: 0.5rem;
+    white-space: nowrap;
   }
 }

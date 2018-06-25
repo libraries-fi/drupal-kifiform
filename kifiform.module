@@ -17,6 +17,7 @@ function kifiform_theme() {
       ]
     ],
     'kifiform_rating__stars' => [
+      'base hook' => 'kifiform_rating',
       'variables' => [
         'votes' => 0,
         'rating' => null,
@@ -37,4 +38,8 @@ function kifiform_theme() {
 function kifiform_field_widget_info_alter(array &$info) {
   $info['number']['field_types'][] = 'kifiform_view_counter';
   $info['number']['field_types'][] = 'kifiform_rating';
+}
+
+function template_preprocess_kifiform_rating__stars() {
+  // var_dump('HOOOOOK');
 }

@@ -32,9 +32,9 @@ class RatingStars extends RatingFilledBar {
       $entity = $item->getEntity();
       $field = $item->getFieldDefinition()->getName();
 
-      $elements[$delta]['rating']['#theme'] = 'kifiform_rating__stars';
-      $elements[$delta]['rating']['#attached'] = ['library' => ['kifiform/rating--stars']];
-      $elements[$delta]['rating']['#stars'] = ceil($item->value / 20);
+      $elements[$delta]['rating']['#type'] = 'kifiform_stars';
+      $elements[$delta]['rating']['#value'] = $item->value;
+      $elements[$delta]['#cache']['max-age'] = 0;
     }
 
     return $elements;
