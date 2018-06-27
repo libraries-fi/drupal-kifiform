@@ -34,7 +34,6 @@ class RatingStars extends RatingFilledBar {
 
       $elements[$delta]['rating']['#type'] = 'kifiform_stars';
       $elements[$delta]['rating']['#value'] = $item->value;
-      $elements[$delta]['#cache']['max-age'] = 0;
     }
 
     return $elements;
