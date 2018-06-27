@@ -2,11 +2,6 @@
 
 function kifiform_theme() {
   return [
-    'kifiform_captcha' => [
-      'variables' => [
-        'foo' => ''
-      ]
-    ],
     'kifiform_rating' => [
       'variables' => [
         'rating' => null,

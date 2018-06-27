@@ -22,10 +22,14 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
  */
 class CaptchaWidget extends WidgetBase {
   public function form(FieldItemListInterface $items, array &$form, FormStateInterface $form_state, $get_delta = NULL) {
-    if (!static::isCaptchaRequired()) {
-      return [];
-    } else {
-      return parent::form($items, $form, $form_state, $get_delta);
+    $element = parent::form($items, $form, $form_state, $get_delta);
+    $element['#process'][] = [get_class($this), 'processCaptcha'];
+    return $element;
+  }
+
+  public static function processCaptcha(array &$element, FormStateInterface $form_state) {
+    if (static::isCaptchaRequired()) {
+      return $element;
     }
   }
 
@@ -33,13 +37,13 @@ class CaptchaWidget extends WidgetBase {
     // FIXME: Load this from a storage.
     $captcha = [
       'question' => t('How much is <b>:a plus :b</b>?', [':a' => t('six'), ':b' => t('three') ] ),
-      'answers' => implode('|', [t('nine'), t('nine', [], ['context' => 'captcha answer #2'])]),
+      'answer' => [t('nine'), t('nine', [], ['context' => 'captcha answer #2'])],
       'description' => t('Write the number as a word.'),
     ];
 
     $captcha += [
       'question' => '#captcha_not_configured#',
-      'answers' => '',
+      'answer' => '',
       'description' => '',
     ];
 
@@ -58,16 +62,16 @@ class CaptchaWidget extends WidgetBase {
       ],
     ];
 
-    $element['input'] = [
+    $element['value'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your answer'),
       '#description' => $captcha['description'],
       '#required' => TRUE,
     ];
 
-    $element['answers'] = [
+    $element['answer'] = [
       '#type' => 'value',
-      '#value' => $captcha['answers'],
+      '#value' => $captcha['answer'],
     ];
 
     return $element;
@@ -80,15 +84,18 @@ class CaptchaWidget extends WidgetBase {
 
   public static function validateFormElement(array &$element, FormStateInterface $form_state) {
     if (!isset($element['#access']) || $element['#access']) {
-      $input = mb_strtolower($element['input']['#value']);
-      $options = array_filter(explode('|', $element['answers']['#value']));
-      $options = array_map('mb_strtolower', $options);
+      $input = $form_state->getValue(array_merge($element['#parents'], ['value']));
+      $allowed_values = $element['answer']['#value'];
 
-      if (in_array($input, $options, TRUE)) {
-        static::setCaptchaDisabledForSession();
-      } else {
-        $form_state->setError($element, t('Invalid answer.'));
+      foreach ($allowed_values as $answer) {
+        // Values are translatable objects so cast them to strings.
+        if ((string)$answer == (string)$input) {
+          static::setCaptchaDisabledForSession();
+          return;
+        }
       }
+
+      $form_state->setError($element, t('Invalid answer.'));
     }
   }
 
