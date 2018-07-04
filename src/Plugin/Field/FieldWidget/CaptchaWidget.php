@@ -108,12 +108,12 @@ class CaptchaWidget extends WidgetBase {
   }
 
   public static function setCaptchaDisabledForSession($state = TRUE) {
-    $session = Drupal::service('user.private_tempstore')->get('kifiform_captcha');
+    $session = Drupal::service('tempstore.private')->get('kifiform_captcha');
     $session->set('captcha_validated', (bool)$state);
   }
 
   public static function isCaptchaRequired() {
-    $session = Drupal::service('user.private_tempstore')->get('kifiform_captcha');
+    $session = Drupal::service('tempstore.private')->get('kifiform_captcha');
     $account = Drupal::currentUser();
     return !$session->get('captcha_validated') && !$account->isAuthenticated();
   }
