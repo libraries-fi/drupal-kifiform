@@ -113,13 +113,11 @@ class CaptchaWidget extends WidgetBase {
   }
 
   public static function isCaptchaRequired() {
-    $session = Drupal::service('tempstore.private')->get('kifiform_captcha');
-    $account = Drupal::currentUser();
-
-    if ($account->isAuthenticated()) {
+    if (Drupal::currentUser()->isAuthenticated()) {
       return FALSE;
     }
 
+    $session = Drupal::service('tempstore.private')->get('kifiform_captcha');
     return !$session->get('captcha_validated');
   }
 }
