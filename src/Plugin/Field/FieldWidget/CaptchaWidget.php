@@ -115,6 +115,11 @@ class CaptchaWidget extends WidgetBase {
   public static function isCaptchaRequired() {
     $session = Drupal::service('tempstore.private')->get('kifiform_captcha');
     $account = Drupal::currentUser();
-    return !$session->get('captcha_validated') && !$account->isAuthenticated();
+
+    if ($account->isAuthenticated()) {
+      return FALSE;
+    }
+
+    return !$session->get('captcha_validated');
   }
 }
