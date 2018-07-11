@@ -39,7 +39,7 @@ class CaptchaWidget extends WidgetBase {
       'question' => t('What is a common pet that eats mice?', ['context' => 'Captcha question']),
       // 'answer' => [t('nine'), t('nine', [], ['context' => 'captcha answer #2'])],
       'answer' => [t('cat'), [], ['context' => 'Captcha answer']],
-      'description' => t('Write the number as a word.'),
+      // 'description' => t('Write the number as a word.'),
     ];
 
     $captcha += [
@@ -90,7 +90,7 @@ class CaptchaWidget extends WidgetBase {
 
       foreach ($allowed_values as $answer) {
         // Values are translatable objects so cast them to strings.
-        if ((string)$answer == (string)$input) {
+        if (strcasecmp((string)$answer, (string)$input) === 0) {
           static::setCaptchaDisabledForSession();
           return;
         }
