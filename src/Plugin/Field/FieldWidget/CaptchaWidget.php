@@ -117,7 +117,9 @@ class CaptchaWidget extends WidgetBase {
       return FALSE;
     }
 
-    $session = Drupal::service('tempstore.private')->get('kifiform_captcha');
-    return !$session->get('captcha_validated');
+    return TRUE;
+
+    // $session = Drupal::service('tempstore.private')->get('kifiform_captcha');
+    // return !$session->get('captcha_validated');
   }
 }
