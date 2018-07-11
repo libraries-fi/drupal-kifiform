@@ -36,9 +36,9 @@ class CaptchaWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     // FIXME: Load this from a storage.
     $captcha = [
-      'question' => t('How much is <b>:a plus :b</b>?', [':a' => t('nine'), ':b' => t('two') ] ),
+      'question' => t('What is a common pet that eats mice?', ['context' => 'Captcha question']),
       // 'answer' => [t('nine'), t('nine', [], ['context' => 'captcha answer #2'])],
-      'answer' => [t('eleven')],
+      'answer' => [t('cat'), [], ['context' => 'Captcha answer']],
       'description' => t('Write the number as a word.'),
     ];
 
