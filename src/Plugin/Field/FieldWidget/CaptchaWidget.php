@@ -36,7 +36,7 @@ class CaptchaWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     // FIXME: Load this from a storage.
     $captcha = [
-      'question' => t('What is a common pet that eats mice?', ['context' => 'Captcha question']),
+      'question' => t('CAPTCHA: What is a common pet that eats mice?', ['context' => 'Captcha question']),
       // 'answer' => [t('nine'), t('nine', [], ['context' => 'captcha answer #2'])],
       'answer' => [t('cat'), [], ['context' => 'Captcha answer']],
       // 'description' => t('Write the number as a word.'),
@@ -54,18 +54,9 @@ class CaptchaWidget extends WidgetBase {
     $element['#required'] = TRUE;
     $element['#process'][] = [get_class($this), 'processQuestionLabel'];
 
-    $element['question'] = [
-      '#type' => 'container',
-      'value' => [
-        '#type' => 'html_tag',
-        '#tag' => 'p',
-        '#value' => $captcha['question'],
-      ],
-    ];
-
     $element['value'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Your answer'),
+      '#title' => $captcha['question'],
       '#description' => $captcha['description'],
       '#required' => TRUE,
     ];
