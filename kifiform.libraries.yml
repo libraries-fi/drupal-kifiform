@@ -15,7 +15,7 @@ rating-ajax:
     public/js/kifiform-rating.js: {}
   dependencies:
     - core/jquery
-    - core/jquery.once
+    - core/once
 view-counter:
   js:
     public/js/kifiform-view-counter.js: {}
@@ -30,4 +30,4 @@ autocomplete-tags:
     public/js/kifiform-autocomplete-tags.js: {}
   dependencies:
     - core/jquery
-    - core/jquery.once
+    - core/once
