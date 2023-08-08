@@ -103,7 +103,7 @@ class RatingItem extends FieldItemBase {
   }
 
   public function isUserAllowedToVote() {
-    $store = \Drupal::service('user.private_tempstore')->get('kifiform');
+    $store = \Drupal::service('tempstore.private')->get('kifiform');
     $key = sprintf('%s.%s.%s', $this->getEntity()->getEntityTypeId(), $this->getFieldDefinition()->getName(), $this->getEntity()->id());
     return !$store->get($key);
   }
@@ -116,7 +116,7 @@ class RatingItem extends FieldItemBase {
     }
 
     if ($lock_session) {
-      $store = \Drupal::service('user.private_tempstore')->get('kifiform');
+      $store = \Drupal::service('tempstore.private')->get('kifiform');
       $key = sprintf('%s.%s.%s', $this->getEntity()->getEntityTypeId(), $this->getFieldDefinition()->getName(), $this->getEntity()->id());
       $store->set($key, TRUE);
     }
