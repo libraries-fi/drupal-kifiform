@@ -59,8 +59,7 @@
 
   Drupal.behaviors.kifiFormAutoCompleteTags = {
     attach: function(context, settings) {
-      var elements = $("input.form-autocomplete")
-        .once("kifiform-autocomplete-tags")
+      var elements = $(once("kifiform-autocomplete-tags", "input.form-autocomplete"))
         .each(function(i, _input) {
           var input = $(_input);
 

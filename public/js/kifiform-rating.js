@@ -3,8 +3,7 @@
 
   Drupal.behaviors.kifiFormContentRating = {
     attach: function(context, settings) {
-      $(".field--type-kifiform-rating")
-        .once("kifiform-rating")
+      $(once("kifiform-rating", ".field--type-kifiform-rating"))
         .each(function(i, _element) {
           var element = $(_element);
           var form = $(_element).find('.rating-form');
