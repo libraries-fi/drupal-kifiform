@@ -74,6 +74,9 @@
 
           init_tags(input, proxy, tags);
 
+          // When enter is disabled, user cannot create new tags.
+          var disableEnter = settings.kifiform && settings.kifiform.disableEnter;
+
           input
             .on("autocompleteselect", function(event, ui) {
               ui.item.autocompleted = true;
@@ -89,6 +92,8 @@
             .on("keypress", function(event) {
               if (event.keyCode == KEY_ENTER && this.value.length > 0) {
                 event.preventDefault();
+
+                if (disableEnter) return;
 
                 append_value(proxy, this.value);
                 append_tag(input, tags, {label: this.value, value: this.value});
