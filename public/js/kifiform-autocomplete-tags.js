@@ -59,8 +59,7 @@
 
   Drupal.behaviors.kifiFormAutoCompleteTags = {
     attach: function(context, settings) {
-      var elements = $("input.form-autocomplete")
-        .once("kifiform-autocomplete-tags")
+      var elements = $(once("kifiform-autocomplete-tags", "input.form-autocomplete"))
         .each(function(i, _input) {
           var input = $(_input);
 
@@ -74,6 +73,9 @@
             .insertAfter(input);
 
           init_tags(input, proxy, tags);
+
+          // When enter is disabled, user cannot create new tags.
+          var disableEnter = settings.kifiform && settings.kifiform.disableEnter;
 
           input
             .on("autocompleteselect", function(event, ui) {
@@ -90,6 +92,8 @@
             .on("keypress", function(event) {
               if (event.keyCode == KEY_ENTER && this.value.length > 0) {
                 event.preventDefault();
+
+                if (disableEnter) return;
 
                 append_value(proxy, this.value);
                 append_tag(input, tags, {label: this.value, value: this.value});
