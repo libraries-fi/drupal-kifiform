@@ -5,17 +5,18 @@ namespace Drupal\kifiform\Form;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
+
 
 class RatingForm extends FormBase {
   protected $entity;
   protected $field;
+  protected $redirectPage;
 
   public function getFormId() {
     return 'kifiform_rating_form';
   }
 
-  public function buildForm(array $form, FormStateInterface $form_state, ContentEntityInterface $answer = NULL, $field = NULL, $redirect_page = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?ContentEntityInterface $answer = NULL, $field = NULL, $redirect_page = NULL) {
     $this->entity = $answer;
     $this->field = $field;
     $this->redirectPage = $redirect_page;

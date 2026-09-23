@@ -5,7 +5,7 @@ namespace Drupal\kifiform\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\FieldableEntityInterface;
-use Drupal\Core\Field\FieldItemListInterface;
+
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -54,6 +54,6 @@ class ViewCounterController extends ControllerBase {
       return TRUE;
     }
 
-    throw new AccessDeniedHttpException;
+    throw new AccessDeniedHttpException();
   }
 }

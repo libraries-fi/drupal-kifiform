@@ -2,13 +2,9 @@
 
 namespace Drupal\kifiform\Plugin\Field\FieldFormatter;
 
-use Drupal\Core\Field\FormatterBase;
-use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\StringFormatter;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Plugin implementation of the 'kifiform_entity_link' formatter.

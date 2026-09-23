@@ -20,7 +20,7 @@ class RatingFieldItemList extends FieldItemList {
 
   }
 
-  public function __construct($definition, $name = NULL, TypedDataInterface $parent = NULL) {
+  public function __construct($definition, $name = NULL, ?TypedDataInterface $parent = NULL) {
     parent::__construct($definition, $name, $parent);
     $this->appendItem();
   }

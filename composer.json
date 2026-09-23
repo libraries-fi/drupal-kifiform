@@ -2,5 +2,9 @@
   "name": "libraries-fi/kifiform",
   "description": "Small collection of general-purpose form components.",
   "type": "drupal-module",
-  "license": "GPL-2.0+"
+  "license": "GPL-2.0+",
+  "require": {
+    "php": ">=8.3",
+    "drupal/core": "^10.3 || ^11"
+  }
 }

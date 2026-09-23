@@ -2,10 +2,8 @@
 
 namespace Drupal\kifiform\Plugin\Field\FieldFormatter;
 
-use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Url;
-use Drupal\Core\Field\Plugin\Field\FieldWidget;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\IntegerFormatter;
 
 

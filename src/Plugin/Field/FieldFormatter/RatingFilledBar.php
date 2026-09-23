@@ -2,15 +2,10 @@
 
 namespace Drupal\kifiform\Plugin\Field\FieldFormatter;
 
-use Drupal;
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Drupal\kifiform\Form\RatingForm;
-
-use Drupal\Core\Form\FormState;
 
 /**
  * Display files in the search results.

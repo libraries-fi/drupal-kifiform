@@ -3,17 +3,17 @@
 namespace Drupal\kifiform\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\kifiform\Form\RatingForm;
+
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-use Drupal\Core\Form\FormState;
+
 
 class RatingController extends ControllerBase {
   public static function create(ContainerInterface $container) {
-    return new static;
+    return new static();
   }
 
   public function __construct() {
